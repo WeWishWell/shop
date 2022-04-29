@@ -89,8 +89,8 @@ public class MainServiceImpl implements MainService{
 	}
 	
 	@Override
-	public int delBuyList(String odm) {
-		return dao.delBuyList(odm);
+	public int delReview(String odm) {
+		return dao.delReview(odm);
 	}
 
 	@Override

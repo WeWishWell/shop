@@ -7,9 +7,17 @@
 <head>
 <meta charset="UTF-8">
 <title>basket.jsp</title>
+<script type="text/javascript">
+function basketBuyCheck() {
+	if(document.querySelector('#ttl_sum').innerText == '0') {
+		alert('장바구니에 물품이 없습니다.');
+		return;
+	}
+	location.href = 'purchase?id=${sessionScope.data}';
+}
+</script>
 </head>
 <body>
-
 <div class="pb-5">
     <div class="container">
       <div class="row">
@@ -92,7 +100,7 @@
                 </h5>
               </li>
             </ul>
-            <a href="purchase?id=${sessionScope.data}" class="btn btn-dark rounded-pill py-2 btn-block" style="float:right">구매하기</a>
+            <a href="#" onclick="basketBuyCheck();" class="btn btn-dark rounded-pill py-2 btn-block" style="float:right">구매하기</a>
           </div>
 <!--         </div> -->
       </div>

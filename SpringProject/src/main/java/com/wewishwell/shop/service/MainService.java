@@ -38,7 +38,7 @@ public interface MainService {
 	
 	public List<Map<String, String>> buyList(String id);
 	
-	public int delBuyList(String odm);
+	public int delReview(String odm);
 	
 	public Map<String, Object> getproductList(Map<String, Object> map);
 

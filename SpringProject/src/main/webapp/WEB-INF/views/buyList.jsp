@@ -15,7 +15,7 @@
 	
 	function realDel(odm) {
 		if (confirm("정말 지우시겠습니까?")) {
-			location.href = 'delBuyList?id=${sessionScope.data}&odm='+odm;
+			location.href = 'delReview?id=${sessionScope.data}&odm='+odm;
         }
 	}
 </script>
@@ -79,9 +79,9 @@
                			}
                		}
                		if(document.querySelector('#review${b.odm}').innerHTML == '') {
-               			var prod_name = '${b.name}'.replace(/ /g, "&nbsp;");
-               			var prod = {id: ${b.prod_id}, name: prod_name, odm: ${b.odm}};
-               			document.querySelector('#review${b.odm}').innerHTML = '<a href="#" onclick="review(prod);">리뷰쓰기</a>';
+               			var prod_name${b.odm} = '${b.name}'.replace(/ /g, "&nbsp;");
+               			var prod${b.odm} = {id: ${b.prod_id}, name: prod_name${b.odm}, odm: ${b.odm}};
+               			document.querySelector('#review${b.odm}').innerHTML = '<a href="#" onclick="review(prod${b.odm});">리뷰쓰기</a>';
                		}
                	</script>
                </c:forEach>

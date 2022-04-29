@@ -1,6 +1,4 @@
 package com.wewishwell.shop.controller;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -203,7 +201,6 @@ public class MainController {
 		public ModelAndView purchase(MemberVO MemberVO) {
 			
 			Map<String, Object> orderInfo = ms.orderInfo(MemberVO);
-			System.out.println("orderInfo"+orderInfo);
 			
 			orderInfo.put("method", "장바구니구매");
 			
@@ -219,7 +216,9 @@ public class MainController {
 		@PostMapping("/purchase")
 		public ModelAndView purchase_post(@RequestParam Map<String, Object> order) {
 			ModelAndView mav = new ModelAndView();
-			
+			order.put("receiver_address", order.get("address"));
+			order.remove("addr");
+			order.remove("address");
 			// 비회원일경우 
 //			System.out.println(order);
 //			boolean isNumeric =  ((String)order.get("user_id")).matches("[+-]?\\d*(\\.\\d+)?"); // 아이디가 숫자인지 체크
@@ -251,7 +250,7 @@ public class MainController {
 			else if(order.get("buy_method").equals("제품바로구매")) {
 				
 				// === order_detail 테이블 추가 ===
-				int rs = ms.insertOrderDetailOne(order);
+				ms.insertOrderDetailOne(order);
 				
 				mav.setViewName("redirect:/orderTracking?order_num="+orderNum); 
 			}
@@ -304,9 +303,9 @@ public class MainController {
 		return mav;
 	}
 	
-	@GetMapping("delBuyList")
-	public String delBuyList(String odm, String id) {
-		int check = ms.delBuyList(odm);
+	@GetMapping("delReview")
+	public String delReview(String odm, String id) {
+		int check = ms.delReview(odm);
 		if(check == 1) {
 			return "redirect:/buyList?id="+id;
 		} else {
@@ -314,6 +313,15 @@ public class MainController {
 		}
 	}
 	
-	
+	// === 비회원 구매내역 페이지
+	@GetMapping("buyListNonmem")
+	public ModelAndView buyListNonmem() {
+		
+		// service
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("buyListNonmem");
+		
+		return mav;
+	}
 
 }

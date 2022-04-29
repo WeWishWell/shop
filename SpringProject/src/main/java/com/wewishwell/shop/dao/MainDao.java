@@ -81,8 +81,8 @@ public class MainDao {
 		return sst.selectList("product.buyList", id);
 	}
 	
-	public int delBuyList(String odm) {
-		return sst.delete("product.delBuyList", odm);
+	public int delReview(String odm) {
+		return sst.delete("product.delReview", odm);
 	}
 	
 	public Map<String, Object> getproductList(Map<String, Object> map) {

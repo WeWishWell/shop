@@ -5,7 +5,7 @@
 
 function ajaxPopup(prod) {
 	var w = window.open("about:blank","_blank","top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no");
-	var name = prod.name.replace(/&nbsp;/g, " ");
+	name = prod.name.replace(/&nbsp;/g, " ");
 	console.log(name);
 	
 	$.ajax({
@@ -41,6 +41,7 @@ function insertReview() {
 		success: function (data) {
 			if(data == 1) {
 				alert('리뷰해주셔서 감사합니다.');
+				opener.parent.location.reload();
 				window.close();
 				return;
 			}

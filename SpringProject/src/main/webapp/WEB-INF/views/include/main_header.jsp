@@ -47,8 +47,8 @@
 				for(let i = arr.length-1; i>=0;i--){
 					reversearr.push(arr[i]);
 				}
-				html = '<li style="padding-left: 16px;"><b>최근에 본 목록</b></li><li><hr class="dropdown-divider"></li>';
-				for(var i = 0; i<reversearr.length;i++ ){
+				html = '<li style="padding-left: 16px;"><b>최근본목록</b></li><li><hr class="dropdown-divider"></li>';
+				for(var i = 0; i<4;i++ ){
 					html += ajaxRecentList(reversearr[i]);
 				}
 				document.querySelector('#recent').innerHTML = html;
@@ -92,6 +92,7 @@
 	.bgColor {background-color: #ffffff;}
 	.active {font-size: x-large; text-decoration:none; color: #000000; margin-left: 20px;}
 	.active:hover {color: #000000;}
+	#headLogin:hover ~ #NotLoginInfo {display: block;}
 	#action1:hover ~ #myInfo {display: block;}
 	#action2:hover ~ #recent {display: block;}
 	#action3:hover ~ #basket {display: block;}
@@ -126,9 +127,15 @@
 				</svg></a>
 				
 				<!-- 로그인 -->
-				<a href="logIn" id="headLogin" hidden="true" class="active" style="margin-top: 6px; padding-bottom: 30px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-unlock" viewBox="0 0 16 16">
+				<a href="logIn" id="headLogin" hidden="true" class="active" style="margin-top: 5px; padding-bottom: 30px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-unlock" viewBox="0 0 16 16">
 				<path d="M11 1a2 2 0 0 0-2 2v4a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h5V3a3 3 0 0 1 6 0v4a.5.5 0 0 1-1 0V3a2 2 0 0 0-2-2zM3 8a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1H3z"/>
 				</svg></a>
+				
+				<ul id="NotLoginInfo" class="dropdown-menu" style="margin-left: 252px;">
+					<li><a class="dropdown-item" href="buyListNonmem">비회원 구매내역</a></li>
+				    <li><hr class="dropdown-divider"></li>
+				    <li><a class="dropdown-item" href="logIn">로그인</a></li>
+				</ul>
 				
 				<!-- 내정보 -->
 				<a href="memberDetail?id=${sessionScope.data}" id="action1" hidden="true" class="active action"  style="margin-top: 3px; padding-bottom: 30px; display: block;"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">

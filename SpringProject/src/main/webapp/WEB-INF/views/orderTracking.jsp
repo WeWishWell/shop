@@ -12,28 +12,125 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
-    />
     <title>order Tracking</title>
-    <script type="text/javascript">
-    window.onload = function() {
-		if('${data[0].order_status}' == '배송준비') {
-			document.querySelector('#dlvy_ready').className = 'step completed';
-
-		}
-		else if('${data[0].order_status}' == '배송 중'){
-            document.querySelector('#dlvy_ready').className = 'step completed';
-            document.querySelector('#dlvy').className = 'step completed';
-		}
-        else if('${data[0].order_status}' == '배송완료') {
-            document.querySelector('#dlvy_ready').className = 'step completed';
-            document.querySelector('#dlvy').className = 'step completed';
-            document.querySelector('#dlvy_fin').className = 'step completed';
+<style type="text/css">
+        .steps .step {
+          display: block;
+          width: 100%;
+          margin-bottom: 35px;
+          text-align: center;
         }
-	}
-</script>
+
+        .steps .step .step-icon-wrap {
+          display: flex;
+          justify-content: center;
+          position: relative;
+          width: 100%;
+          height: 80px;
+          text-align: center;
+        }
+
+        .steps .step .step-icon-wrap::before,
+        .steps .step .step-icon-wrap::after {
+          display: block;
+          position: absolute;
+          top: 50%;
+          width: 50%;
+          height: 3px;
+          margin-top: -1px;
+          background-color: #e1e7ec;
+          content: '';
+          z-index: 1;
+        }
+
+        .steps .step .step-icon-wrap::before {
+          left: 0;
+        }
+
+        .steps .step .step-icon-wrap::after {
+          right: 0;
+        }
+	
+        .steps .step .step-icon {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+          width: 80px;
+          height: 80px;
+          border: 1px solid #e1e7ec;
+          border-radius: 50%;
+          background-color: #f5f5f5;
+          color: #374250;
+          font-size: 38px;
+          line-height: 81px;
+          z-index: 5;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .steps .step .step-title {
+          margin-top: 16px;
+          margin-bottom: 0;
+          color: #606975;
+          font-size: 14px;
+          font-weight: 500;
+        }
+
+        .steps .step:first-child .step-icon-wrap::before {
+          display: none;
+        }
+
+        .steps .step:last-child .step-icon-wrap::after {
+          display: none;
+        }
+
+        .steps .step.completed .step-icon-wrap::before,
+        .steps .step.completed .step-icon-wrap::after {
+          background-color: #f7d069;
+        }
+
+        .steps .step.completed .step-icon {
+          border-color: #f7d069;
+          background-color: #f7d069;
+          color: #fff;
+        }
+
+        @media (max-width: 576px) {
+          .flex-sm-nowrap .step .step-icon-wrap::before,
+          .flex-sm-nowrap .step .step-icon-wrap::after {
+            display: none;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .flex-md-nowrap .step .step-icon-wrap::before,
+          .flex-md-nowrap .step .step-icon-wrap::after {
+            display: none;
+          }
+        }
+
+        @media (max-width: 991px) {
+          .flex-lg-nowrap .step .step-icon-wrap::before,
+          .flex-lg-nowrap .step .step-icon-wrap::after {
+            display: none;
+          }
+        }
+
+        @media (max-width: 1200px) {
+          .flex-xl-nowrap .step .step-icon-wrap::before,
+          .flex-xl-nowrap .step .step-icon-wrap::after {
+            display: none;
+          }
+        }
+
+        .bg-faded,
+        .bg-secondary {
+          background-color: #f5f5f5 !important;
+        }
+</style>
   </head>
   <body>
     <div id="snippetContent">
@@ -172,129 +269,21 @@
         </div>
       </div>
     </div>
-      
-      <style type="text/css">
-        body {
-          margin-top: 20px;
-        }
-
-        .steps .step {
-          display: block;
-          width: 100%;
-          margin-bottom: 35px;
-          text-align: center;
-        }
-
-        .steps .step .step-icon-wrap {
-          display: flex;
-          justify-content: center;
-          position: relative;
-          width: 100%;
-          height: 80px;
-          text-align: center;
-        }
-
-        .steps .step .step-icon-wrap::before,
-        .steps .step .step-icon-wrap::after {
-          display: block;
-          position: absolute;
-          top: 50%;
-          width: 50%;
-          height: 3px;
-          margin-top: -1px;
-          background-color: #e1e7ec;
-          content: '';
-          z-index: 1;
-        }
-
-        .steps .step .step-icon-wrap::before {
-          left: 0;
-        }
-
-        .steps .step .step-icon-wrap::after {
-          right: 0;
-        }
-	
-        .steps .step .step-icon {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          position: relative;
-          width: 80px;
-          height: 80px;
-          border: 1px solid #e1e7ec;
-          border-radius: 50%;
-          background-color: #f5f5f5;
-          color: #374250;
-          font-size: 38px;
-          line-height: 81px;
-          z-index: 5;
-
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        .steps .step .step-title {
-          margin-top: 16px;
-          margin-bottom: 0;
-          color: #606975;
-          font-size: 14px;
-          font-weight: 500;
-        }
-
-        .steps .step:first-child .step-icon-wrap::before {
-          display: none;
-        }
-
-        .steps .step:last-child .step-icon-wrap::after {
-          display: none;
-        }
-
-        .steps .step.completed .step-icon-wrap::before,
-        .steps .step.completed .step-icon-wrap::after {
-          background-color: #f7d069;
-        }
-
-        .steps .step.completed .step-icon {
-          border-color: #f7d069;
-          background-color: #f7d069;
-          color: #fff;
-        }
-
-        @media (max-width: 576px) {
-          .flex-sm-nowrap .step .step-icon-wrap::before,
-          .flex-sm-nowrap .step .step-icon-wrap::after {
-            display: none;
-          }
-        }
-
-        @media (max-width: 768px) {
-          .flex-md-nowrap .step .step-icon-wrap::before,
-          .flex-md-nowrap .step .step-icon-wrap::after {
-            display: none;
-          }
-        }
-
-        @media (max-width: 991px) {
-          .flex-lg-nowrap .step .step-icon-wrap::before,
-          .flex-lg-nowrap .step .step-icon-wrap::after {
-            display: none;
-          }
-        }
-
-        @media (max-width: 1200px) {
-          .flex-xl-nowrap .step .step-icon-wrap::before,
-          .flex-xl-nowrap .step .step-icon-wrap::after {
-            display: none;
-          }
-        }
-
-        .bg-faded,
-        .bg-secondary {
-          background-color: #f5f5f5 !important;
-        }
-      </style>
     </div>
+<script type="text/javascript">
+	if('${data[0].order_status}' == '배송준비') {
+		document.querySelector('#dlvy_ready').className = 'step completed';
+
+	}
+	else if('${data[0].order_status}' == '배송 중'){
+           document.querySelector('#dlvy_ready').className = 'step completed';
+           document.querySelector('#dlvy').className = 'step completed';
+	}
+    else if('${data[0].order_status}' == '배송완료') {
+        document.querySelector('#dlvy_ready').className = 'step completed';
+        document.querySelector('#dlvy').className = 'step completed';
+        document.querySelector('#dlvy_fin').className = 'step completed';
+    }
+</script>
   </body>
 </html>

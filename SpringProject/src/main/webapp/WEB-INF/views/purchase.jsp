@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="./include/header.jsp"%>
+<%@include file="./include/daumjuso.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,10 +23,14 @@
 		else{
 			if(document.querySelector('#user-address').checked) {
 				document.querySelector('#orderusername').value = "${data.user_name }";
-				document.querySelector('#address').value = "${data.address }";
+				document.querySelector('#address').value = "${data.address}";
+				document.querySelector('#realAddress').value = "${data.address}";
+				document.querySelector('#detailAddress').hidden = true;
 			} else {
 				document.querySelector('#orderusername').value = "" ;
 				document.querySelector('#address').value = "" ;
+				document.querySelector('#realAddress').value = "";
+				document.querySelector('#detailAddress').hidden = false;
 			}
 		}
 	}
@@ -57,7 +62,7 @@
 			</div>
 
 			<div class="center">
-				<div class="col-md-7 col-lg-8">
+				<div class="col-md-7 col-lg-8" style="margin: auto;">
 				
 					<hr class="my-4">
 					<h3>주문 상품 정보</h3>
@@ -93,34 +98,37 @@
 					</div>
 					<br>
 					
-					<form action="purchase" method="post" class="needs-validation" novalidate>
+					<form action="purchase" method="post" name="form" class="needs-validation" novalidate>
 <!-- 					<form class="needs-validation" novalidate> -->
 					<input type="hidden" name="user_id" value="${data.user_id }">
 					<input type="hidden" name="buy_method" value="${data.method }">
 					<input type="hidden" name="prod_id" value="${data.prod_id }">
 					<input type="hidden" name="prod_cnt" value="${data.ttl_cnt }">
-						<div class="row g-3">
-							<div class="col-12">
-								<label for="orderusername" class="form-label">이름</label>
-								<div class="input-group has-validation">
-									<input type="text" class="form-control" id="orderusername" name="receiver_name" placeholder="받는사람 이름" required>
-									<div class="invalid-feedback">받는 사람 이름을 입력해주세요.</div>
-								</div>
+						<div class="col-12">
+							<label for="orderusername" class="form-label">이름</label>
+							<div class="input-group has-validation">
+								<input type="text" class="form-control" id="orderusername" name="receiver_name" placeholder="받는사람 이름" required>
+								<div class="invalid-feedback">받는 사람 이름을 입력해주세요.</div>
 							</div>
+						</div>
 
-							<div class="col-12">
-								<label for="phone" class="form-label">전화번호</label> 
-								<div class="input-group has-validation">
-									<input type="tel" class="form-control" id="phone" name="receiver_phone" placeholder="010-1234-5678" required>
-									<div class="invalid-feedback">배송현황을 연락받을 전화번호를 입력해주세요.</div>
-								</div>
+						<div class="col-12">
+							<label for="phone" class="form-label">전화번호</label> 
+							<div class="input-group has-validation">
+								<input type="tel" class="form-control" id="phone" name="receiver_phone" placeholder="010-1234-5678" required>
+								<div class="invalid-feedback">배송현황을 연락받을 전화번호를 입력해주세요.</div>
 							</div>
+						</div>
 
-							<div class="col-12">
-								<label for="address" class="form-label">배송지 주소</label> 
-								<input type="text" class="form-control" id="address" name="receiver_address" placeholder="배송지 주소" required>
-								<div class="invalid-feedback">배송지를 입력해주세요.</div>
+						<div class="col-12">
+							<label for="address" class="form-label">배송지 주소</label> 
+							<button type="button" class="btn btn-secondary" style="width: 128px; margin: 72px 0 0 80px; position: absolute;" onclick="daumPostcode();">우편번호 찾기</button>
+							<input type="text" id="address" readonly="readonly" style="width: 486px;" name="addr" class="form-control" placeholder="" aria-label="addr-holder" aria-describedby="addr-form">
+							<div style="margin-top: 2px;">
+								<input type="text" id="detailAddress" onkeyup="getDetailAddr(this);" style="width: 163px;" id="detailaddr" class="form-control" placeholder="상세주소">
 							</div>
+							<input type="hidden" id="realAddress" class="form-control" name="address">
+						</div>
 
 						<hr class="my-4">
 						<h3 class="mb-3">결제방식</h3>
