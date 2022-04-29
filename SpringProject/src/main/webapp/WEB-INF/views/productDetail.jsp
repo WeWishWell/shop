@@ -37,7 +37,7 @@
 	}
 	
 	function like() {
-		if('${sessionScope.data}' == '') {
+		if(!isNaN(${sessionScope.data})) {
 			if (window.confirm("로그인 회원만 찜 기능을 사용할 수 있습니다. 로그인 페이지로 이동하시겠습니까?")) {
 				  location.href = "logIn";
 			}
