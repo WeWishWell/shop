@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="bgColor" style="width: 100%; height: 2000px; text-align: center;">
-	<img alt="organic" style="width: 100%;" src="resources/images/index_bg.png">
+	<img alt="organic" id="bgImg" style="width: 100%;" src="resources/images/index_bg.png">
 </div>
 <%@include file="include/footer.jsp"%>
 </body>

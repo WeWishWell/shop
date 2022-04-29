@@ -23,14 +23,16 @@
 		else{
 			if(document.querySelector('#user-address').checked) {
 				document.querySelector('#orderusername').value = "${data.user_name }";
-				document.querySelector('#address').value = "${data.address}";
-				document.querySelector('#realAddress').value = "${data.address}";
-				document.querySelector('#detailAddress').hidden = true;
+				document.form.addr.value = "${data.address}";
+				document.form.address.value = "${data.address}";
+				document.querySelector('#detailaddr').hidden = true;
+				document.querySelector('#addrBtn').hidden = true;
 			} else {
 				document.querySelector('#orderusername').value = "" ;
-				document.querySelector('#address').value = "" ;
-				document.querySelector('#realAddress').value = "";
-				document.querySelector('#detailAddress').hidden = false;
+				document.form.addr.value = "" ;
+				document.form.address.value = "";
+				document.querySelector('#detailaddr').hidden = false;
+				document.querySelector('#addrBtn').hidden = false;
 			}
 		}
 	}
@@ -121,13 +123,13 @@
 						</div>
 
 						<div class="col-12">
-							<label for="address" class="form-label">배송지 주소</label> 
-							<button type="button" class="btn btn-secondary" style="width: 128px; margin: 72px 0 0 80px; position: absolute;" onclick="daumPostcode();">우편번호 찾기</button>
-							<input type="text" id="address" readonly="readonly" style="width: 486px;" name="addr" class="form-control" placeholder="" aria-label="addr-holder" aria-describedby="addr-form">
+							<label for="address" class="important">주소</label>
+							<button type="button" id="addrBtn" class="btn btn-secondary" style="width: 128px; margin: 64px 0 0 135px; position: absolute;" onclick="daumPostcode();">우편번호 찾기</button>
+							<input type="text" readonly="readonly" name="addr" class="form-control" placeholder="" aria-label="addr-holder" aria-describedby="addr-form">
 							<div style="margin-top: 2px;">
-								<input type="text" id="detailAddress" onkeyup="getDetailAddr(this);" style="width: 163px;" id="detailaddr" class="form-control" placeholder="상세주소">
+								<input type="text" onkeyup="getDetailAddr(this);" style="width: 163px;" id="detailaddr" class="form-control" placeholder="상세주소">
 							</div>
-							<input type="hidden" id="realAddress" class="form-control" name="address">
+							<input type="hidden" class="form-control" name="address">
 						</div>
 
 						<hr class="my-4">

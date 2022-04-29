@@ -67,6 +67,6 @@
     	if(addrValue.includes('/ 상세')) {
     		addrValue = addrValue.substring(0, addrValue.indexOf('/ 상세'));
     	}
-	    document.form.address.value = addrValue + "/ 상세주소 :" + param.value;
+    	document.form.address.value = addrValue + "/ 상세주소 :" + param.value;
 	}
 </script>
