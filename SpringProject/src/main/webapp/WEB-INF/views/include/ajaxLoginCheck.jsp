@@ -88,7 +88,6 @@
 				}
 				const refFull = document.referrer.substring(document.referrer.indexOf('/shop/')+6);
 				const ref = refFull.substring(0, refFull.indexOf('?'));
-				console.log(ref);
 				location.href = 'pwTrue?ref='+ref;
 			},
 			error: function (request, status, error) {

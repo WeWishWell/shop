@@ -30,6 +30,11 @@ public class MainController {
 	@Autowired
 	MemberService mbs;
 	
+	@GetMapping("test")
+	public String testing() {
+		return "test";
+	}
+	
 	@GetMapping("/")
 	public String index(HttpServletRequest req) {
 		Cookie cookie = WebUtils.getCookie(req, "nm_ID");

@@ -75,6 +75,9 @@ public class MemberController {
 		MemberVO log = ms.memberLogin(vo);
 		HttpSession s = req.getSession();
 		s.setAttribute("data", log.getId());
+		if(log.getRole().equals("admin")) {
+			s.setAttribute("roleCheck", log.getRole());
+		}
 		return "index";
 	}
 	
@@ -83,6 +86,7 @@ public class MemberController {
 		HttpSession s = req.getSession();
 		Cookie coo = WebUtils.getCookie(req, "nm_ID");
 		s.setAttribute("data", coo.getValue());
+		s.removeAttribute("roleCheck");
 		return "index";
 	}
 	
@@ -100,7 +104,10 @@ public class MemberController {
 	}
 	
 	@GetMapping("/memberUpdate")
-	public ModelAndView gotoMemberUpdate(MemberVO vo) {
+	public ModelAndView gotoMemberUpdate(HttpServletRequest req) {
+		HttpSession s = req.getSession();
+		MemberVO vo = new MemberVO();
+		vo.setId((String)s.getAttribute("data"));
 		MemberVO detail = ms.memberdetail(vo);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("data", detail);
@@ -128,17 +135,17 @@ public class MemberController {
 	public String delete(MemberVO vo, HttpServletRequest req) {
 		ms.delete(vo);
 		HttpSession s = req.getSession();
-		s.invalidate();
+		Cookie coo = WebUtils.getCookie(req, "nm_ID");
+		s.setAttribute("data", coo.getValue());
+		s.removeAttribute("roleCheck");
 		return "index";
 	}
 	
 	@GetMapping("/pwTrue")
-	public String pwTrue(@RequestParam String ref, HttpServletRequest req) {
+	public String pwTrue(@RequestParam String ref) {
 		if(!ref.equals("go")) {
-			HttpSession s = req.getSession();
-			String id = (String)s.getAttribute("data");
 			if(ref.equals("memberDetail")) {
-				return "redirect:/memberUpdate?id="+id;
+				return "redirect:/memberUpdate";
 			}
 			return "index";
 		} else {

@@ -60,6 +60,12 @@
 		action4.addEventListener("mouseover", () => {
 			ajaxLikeList();
 		});
+		
+		if('${sessionScope.roleCheck}' != '') {
+			document.querySelector('#myInfo').innerHTML += '<li><a class="dropdown-item" href="#" style="color: red;">관리자</a></li><li><a class="dropdown-item" href="logout">로그아웃</a></li>';
+		} else {
+			document.querySelector('#myInfo').innerHTML += '<li><a class="dropdown-item" href="logout">로그아웃</a></li>';
+		}
 	}
 	
 	window.addEventListener('scroll', () => { 
@@ -144,7 +150,6 @@
 					<li><a class="dropdown-item" href="memberDetail?id=${sessionScope.data}">내 정보</a></li>
 					<li><a class="dropdown-item" href="buyList?id=${sessionScope.data}">구매내역</a></li>
 				    <li><hr class="dropdown-divider"></li>
-				    <li><a class="dropdown-item" href="logout">로그아웃</a></li>
 				</ul>
 				
 				<script type="text/javascript">

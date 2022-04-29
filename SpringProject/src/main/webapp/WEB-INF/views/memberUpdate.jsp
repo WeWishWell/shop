@@ -45,7 +45,8 @@ function check() {
 
 function checkDel() {
 	if (window.confirm("삭제한 계정은 되돌릴 수 없습니다. 정말 삭제하시겠습니까?")) {
-		  location.href = "delete?id=${sessionScope.data}";
+		alert('삭제가 완료되었습니다. 이용해주셔서 감사합니다.');
+		location.href = "delete?id=${sessionScope.data}";
 	}
 }
 

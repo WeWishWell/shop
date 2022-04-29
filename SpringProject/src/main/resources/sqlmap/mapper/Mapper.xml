@@ -10,7 +10,7 @@
 	</insert>
 		
 	<select id="login" parameterType="MemberVO" resultType="MemberVO">
-		<![CDATA[SELECT id FROM members where id = #{id} and pw = #{pw}]]>
+		<![CDATA[SELECT id, role FROM members where id = #{id} and pw = #{pw}]]>
 	</select>
 	
 	<update id="update" parameterType="MemberVO">
