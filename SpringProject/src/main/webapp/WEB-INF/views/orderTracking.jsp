@@ -149,9 +149,10 @@
               <span class="text-medium">상태 : </span> ${data[0].order_status}
             </div>
             <div class="w-100 text-center py-1 px-2">
-              <span class="text-medium">주문날짜 : </span> 
-<%--               <input id="party" type="datetime-local" name="partydate" value="${data[0].order_date}"> --%>
-              ${data[0].order_date}
+              <span class="text-medium" id="orderDate"></span>
+              <script type="text/javascript">
+              	document.querySelector('#orderDate').innerText = '주문날짜 : '+'${data[0].order_date}'.replace('T', " ");
+              </script>
             </div>
           </div>
           <div class="card-body">
@@ -220,7 +221,7 @@
         </div>
             <div class="card-body">
                  <!-- Shopping cart table -->
-        <div class="table-responsive">
+        <div class="table-responsive" style="margin-bottom:50 ">
           <table class="table">
             <thead>
               <tr>
