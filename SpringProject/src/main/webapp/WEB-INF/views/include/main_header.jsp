@@ -20,10 +20,8 @@
 		const action3 = document.querySelector('#action3');
 		const action4 = document.querySelector('#action4');
 		
-		window.addEventListener('click', () => {
-			if(!(document.querySelector('#searchText') == document.activeElement)) {
-				document.querySelector('#searchBtn2').style.opacity = 0;
-			}
+		document.querySelector('#searchText').addEventListener('blur', () => {
+			document.querySelector('#searchBtn2').style.opacity = 0;
 		});
 		
 		color.addEventListener('mouseover', () => {
@@ -106,7 +104,7 @@
 	<div id="color" style="width: 100%; height: 110px; position: fixed; z-index: 900">
 		<div style="width: 1280px; margin: auto;">
 		<form action="product" method="post" id="searchBtn2" class="search-box" style="position: absolute; margin: 120px 0 0 920px; opacity: 0;">
-			<input type="text" id="searchText" name= "keyword" placeholder=" " onkeyup=""/><button type="reset"></button>
+			<input type="text" id="searchText" name= "keyword" placeholder="검색어를 입력하세요"/><button type="reset"></button>
 			<button hidden="true" type="submit"></button>
 		</form>
 		<a href="/shop/"><img alt="www" style="height: 110px; margin: 0 0 0 50px;" src="resources/images/logo.png"></a>

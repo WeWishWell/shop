@@ -20,10 +20,8 @@
 		const action3 = document.querySelector('#action3');
 		const action4 = document.querySelector('#action4');
 		
-		window.addEventListener('click', () => {
-			if(!(document.querySelector('#searchText') == document.activeElement)) {
-				document.querySelector('#searchBtn2').style.opacity = 0;
-			}
+		document.querySelector('#searchText').addEventListener('blur', () => {
+			document.querySelector('#searchBtn2').style.opacity = 0;
 		});
 		
 		color.addEventListener('mouseover', () => {
