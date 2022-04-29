@@ -55,6 +55,10 @@
 					document.querySelector('#id').focus();
 					return;
 				}
+				const check = idFormCheck();
+				if(check == 0) {
+					return;
+				}
 				alert('사용 가능한 ID입니다.');
 				document.querySelector('#checkBtn').className = 'btn btn-secondary';
 				document.querySelector('#checkBtn').disabled = true;
@@ -64,6 +68,24 @@
 			}
 		});
 	}
+	
+	function idFormCheck() {
+	    const idCheck = '문자와 숫자의 조합은 필수입니다.';
+		
+	    if(isNaN(document.querySelector('#id').value)) {
+	    	if(document.querySelector('#id').value.replace(/\D/g,'') == '') {
+	    		alert(idCheck);
+	    		return 0;
+	    	} else {
+	    		return 1;
+	    	}
+	    } else {
+	    	alert(idCheck);
+	    	return 0;
+	    }
+	}
+	
+	
 	
 	function pwTrue() {
 		let pw = document.form.pw;
