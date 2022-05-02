@@ -161,5 +161,9 @@
 			left join product p
 			on oi.prod_id = p.id;
 		]]>
-	</select>	
+	</select>
+	
+	<select id="prodListForIndex" resultType="productVO">
+		<![CDATA[SELECT name, id FROM product]]>
+	</select>
 </mapper>

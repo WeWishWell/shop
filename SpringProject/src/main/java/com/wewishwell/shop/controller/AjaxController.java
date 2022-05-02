@@ -14,6 +14,7 @@ import com.wewishwell.shop.service.MemberService;
 import com.wewishwell.shop.vo.BasketVO;
 import com.wewishwell.shop.vo.MemberVO;
 import com.wewishwell.shop.vo.ProdLikeVO;
+import com.wewishwell.shop.vo.ProductVO;
 import com.wewishwell.shop.vo.ReviewVO;
 
 @RestController
@@ -84,6 +85,11 @@ public class AjaxController {
 	@PostMapping("reviewWrite")
 	public int insertReview(ReviewVO vo) {
 		return mbs.insertReview(vo);
+	}
+	
+	@PostMapping("prodListForIndex")
+	public List<ProductVO> prodListForIndex() {
+		return ms.prodListForIndex();
 	}
 	
 }

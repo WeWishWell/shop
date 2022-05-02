@@ -114,5 +114,8 @@ public class MainDao {
 		return sst.selectList("product.getOrderList", order);
 	}
 
+	public List<ProductVO> prodListForIndex() {
+		return sst.selectList("product.prodListForIndex");
+	}
 	
 }

@@ -127,5 +127,10 @@ public class MainServiceImpl implements MainService{
 	public List<Map<String, Object>> getOrderList(Map<String, Object> order) {
 		return dao.getOrderList(order);
 	}
+
+	@Override
+	public List<ProductVO> prodListForIndex() {
+		return dao.prodListForIndex();
+	}
 	
 }

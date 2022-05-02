@@ -3,6 +3,8 @@ package com.wewishwell.shop.controller;
 import java.io.File;
 import java.util.Calendar;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,11 +15,10 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileController {
 	
 	@PostMapping("fileUpload")
-	public String testing(@RequestParam("file") MultipartFile multi, Model model) {
+	public String testing(@RequestParam("file") MultipartFile multi, Model model, HttpServletRequest request) {
         try {
         	 
-            //String uploadpath = request.getServletContext().getRealPath(path);
-            String uploadpath = "/WWW_SpringProject/src/main/webapp/resources/images";
+            String uploadpath = request.getSession().getServletContext().getRealPath("resources/images");
             String originFilename = multi.getOriginalFilename();
             String extName = originFilename.substring(originFilename.lastIndexOf("."),originFilename.length());
             long size = multi.getSize();

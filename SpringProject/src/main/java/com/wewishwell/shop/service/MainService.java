@@ -53,4 +53,6 @@ public interface MainService {
 	public List<Map<String, Object>> getOrderList(Map<String, Object> order);
 
 	public int insertOrderDetailOne(Map<String, Object> order);
+	
+	public List<ProductVO> prodListForIndex();
 }
