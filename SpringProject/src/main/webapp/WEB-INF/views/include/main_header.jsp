@@ -123,7 +123,7 @@
 				<a href="review" class="active" style="position: absolute; margin-left: 100px;">리뷰</a>
 				
 				<!-- 이벤트 -->
-				<a href="#" class="active" style="position: absolute; margin-left: 180px;">이벤트</a>
+				<a href="eventListOn?check=do" class="active" style="position: absolute; margin-left: 180px;">이벤트</a>
 				
 				<!-- 검색 -->
 				<a href="#" id="searchBtn" onclick="searchBtn();" class="active" style="margin: 6px 0 0 332px;"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">

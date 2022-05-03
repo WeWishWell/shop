@@ -84,7 +84,6 @@ public class MainController {
 	public ModelAndView getSearchList(@RequestParam Map<String,String> map) {
 		ModelAndView mav = new ModelAndView();
 		List<ProductVO> searchList = ms.getSearchList(map);
-		System.out.println(searchList);
 		mav.addObject("data", searchList);
 		mav.setViewName("productView");
 		return mav;

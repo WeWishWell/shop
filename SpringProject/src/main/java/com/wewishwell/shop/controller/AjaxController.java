@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.wewishwell.shop.service.EventService;
 import com.wewishwell.shop.service.MainService;
 import com.wewishwell.shop.service.MemberService;
 import com.wewishwell.shop.vo.BasketVO;
+import com.wewishwell.shop.vo.EventReplyVO;
 import com.wewishwell.shop.vo.MemberVO;
 import com.wewishwell.shop.vo.ProdLikeVO;
 import com.wewishwell.shop.vo.ProductVO;
@@ -25,6 +27,9 @@ public class AjaxController {
 	
 	@Autowired
 	MemberService mbs;
+	
+	@Autowired
+	EventService es;
 	
 	@PostMapping("loginCheck")
 	public int loginCheck(MemberVO vo) {
@@ -91,5 +96,25 @@ public class AjaxController {
 	public List<ProductVO> prodListForIndex() {
 		return ms.prodListForIndex();
 	}
+	
+	// reply
+	@PostMapping("/insertReply")
+	public List<EventReplyVO> insertReply(EventReplyVO vo) {
+		if(!vo.getContent().equals("")) {
+			es.insertReply(vo);
+		}
+		return es.selectReplyList(vo.getEvent_seq());
+	}
+	
+	@PostMapping("/updateReply")
+	public int updateReply(EventReplyVO vo) {
+		return es.updateReply(vo);
+	}
+
+	@GetMapping("/deleteReply")
+	public int deleteReply(EventReplyVO vo) {
+		return es.deleteReply(vo);
+	}
+
 	
 }
